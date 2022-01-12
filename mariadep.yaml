@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mariadep
+  name: mariadep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadep
+  strategy: 
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 66%
+  template:
+    metadata:
+      labels:
+        app: mariadep
+    spec:
+      containers:
+      - image: mariadb
+        name: mariadb
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MARIADB_ROOT_PASSWORD
+          value: "pasword123"
+
+

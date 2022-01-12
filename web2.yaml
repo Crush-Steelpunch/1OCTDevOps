@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    environment: prod
+    app: web
+  name: webprod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+      environment: prod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web
+        environment: prod
+    spec:
+      containers:
+      - image: httpd
+        name: httpd
+        resources: {}
+status: {}

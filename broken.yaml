@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: borken
+  labels:
+    app: borken
+spec:
+  containers:
+  - name: borken
+    image: mariadb
+    ports:
+    - containerPort: 3306

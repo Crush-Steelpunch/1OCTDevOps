@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rsyslog
+  name: rsyslog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rsyslog
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rsyslog
+    spec:
+      containers:
+      - image: voxxit/rsyslog
+        name: rsyslog
+        volumeMounts:
+          - name: rsyslog
+            mountPath: /etc/rsyslog.d/
+      volumes:
+      - name: rsyslog
+        configMap: 
+          name: rsyslog
